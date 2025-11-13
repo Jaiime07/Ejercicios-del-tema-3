@@ -1,15 +1,19 @@
 def invierte_numero(n):
-    res = 0
     while n != 0:
-        res = res * 10 + numero % 10
-        n = n // 10
-        return res
+        nueva_primera = n // 10
+        n = n % 10
+        invertida = n + nueva_primera
+         
 
 def convierte_binario(n:int):
-    res = ""
-    while n != 0:
-        cadena_binaria = str(n % 2) + cadena_binaria
-        #terminar
+    resultado = "" 
+    while n > 0:
+        bit = n % 2
+        resultado = str(bit) + resultado
+        n = n // 2
+    if n == 0 and resultado == "":
+        resultado = "0" + resultado
+    return resultado
 
 def sumar_divisores_propios(n:int):
     suma = 0

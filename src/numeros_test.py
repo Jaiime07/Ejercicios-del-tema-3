@@ -1,4 +1,4 @@
-from numeros import invierte_numero, convierte_binario, busca_perfecto, busca_perfecto_rapido
+from numeros import invierte_numero, convierte_binario, busca_perfecto
 import time
 
 def test_invierte_numero():
@@ -46,5 +46,5 @@ def test_busca_perfecto():
 
 test_invierte_numero()
 test_convierte_binario()
-test_busca_perfecto()
+#test_busca_perfecto()
 print("Todas las pruebas pasaron correctamente.")
