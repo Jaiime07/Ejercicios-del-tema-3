@@ -18,45 +18,34 @@ def es_palindromo(texto, ignora_espacios, ignora_mayusculas):
     return palindromo
     
 def estiliza_mensaje(texto, alterna_may_min = True, usa_dieresis = False, sustituye_espacios = " ") -> str | bool | bool | str:
-    if alterna_may_min:
-        contador = 0
-        alternado = ""
-        for c in texto:
-            if c.isalpha():
-                contador += 1
-                if contador % 2 != 0:
-                    alternado = alternado + c.upper() 
-                elif contador % 2 == 0:
-                    alternado = alternado + c.lower() 
-            else:
-                alternado = alternado + c
-            
-        return alternado
- 
+
+    res = texto
+    cont_alterna = 0
+    
     if usa_dieresis:
-        texto_dieresis = ""
-        for c in texto:
-        
-            if c.lower() == "a":
-                texto_dieresis = texto_dieresis+"ä"
-            elif c.lower() == "e":
-                texto_dieresis = texto_dieresis+"é"
-            elif c.lower() == "i":
-                texto_dieresis = texto_dieresis+"ï"
-            elif c.lower() == "o":
-                texto_dieresis = texto_dieresis+"ö"
-            elif c.lower() == "u":
-                texto_dieresis = texto_dieresis+"ü"
-            else:
-                texto_dieresis = texto_dieresis + c
-        return texto_dieresis
+        for c in res:
+            if c == 'a':
+                res.replace(c, 'ä')
+            elif c == 'e':
+                res.replace(c, 'ë')
+            elif c == 'i':
+                res.replace(c, 'ï')
+            elif c == 'o':
+                res.replace(c, 'ö')
+            elif c == 'u':
+                res.replace(c, 'ü')
+
+    if alterna_may_min:
+        for c in res:
+            if c.isaplha() and not cont_alterna % 2 == 0:
+                res.replace(c, c.upper())
+            elif c.isaplha() and cont_alterna % 2 == 0:
+                res.replace(c, c.lower())        
+
+    if sustituye_espacios != " " and sustituye_espacios:
+        res.replace(" ", sustituye_espacios )
     
-    if sustituye_espacios != "":
-        texto_espacios = ""
-        for c in texto:
-            if c == " ":
-                h = texto.replace(c, sustituye_espacios)
-                texto_espacios = texto_espacios + h
-        return texto
-    #está mal, no se puede usar un return en cada uno porque queremos poder aplicar las 3 funciones al mismo texto 
-    
+    return res
+
+
+
